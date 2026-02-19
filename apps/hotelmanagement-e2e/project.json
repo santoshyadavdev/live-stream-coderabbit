@@ -1,0 +1,9 @@
+{
+  "name": "hotelmanagement-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/hotelmanagement-e2e/src",
+  "implicitDependencies": ["hotelmanagement"],
+  "// targets": "to see all targets run: nx show project hotelmanagement-e2e --web",
+  "targets": {}
+}
