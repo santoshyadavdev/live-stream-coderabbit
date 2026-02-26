@@ -1,21 +1,42 @@
-<h2>{{title}}</h2>
-
-<h3>Hotels Part of our Family</h3>
+<h2>{{title()}}</h2>
 
 <!-- @if (hotelList.length > 0) {  -->
 
-@for (hotel of hotelList; track $index) {
+<button (click)="propertyTypes.set('Hotel')">Hotels</button>
+<button (click)="propertyTypes.set('Motel')">Motels</button>
+<button (click)="propertyTypes.set('Resort')">Resorts</button>
+<button (click)="propertyTypes.set('Hostel')">Hostels</button>
+
+@switch (propertyTypes()) { @case('Hotel') {
+<h3>Hotels Part of our Family</h3>
+@for (hotel of hotelList(); track hotel.id; let index = $index; let isFirst =
+$first; let isLast = $last; let even = $even; let odd = $odd) {
 <div class="hotel">
   ID:
-  <p>{{$index + 1}}</p>
+  <p [class]="even ? 'even' : 'odd'">{{$index + 1}}</p>
   Name:
   <h4>{{hotel.name}}</h4>
   Location:
   <p>{{hotel.location}}</p>
+  @if (hotel.numberOfRooms > 50) {
+  <p>Number of Rooms: {{hotel.numberOfRooms}}</p>
+  } @else if (hotel.numberOfRooms <=50 && hotel.numberOfRooms > 0) {
+  <p>Last {{hotel.numberOfRooms}} rooms available</p>
+  } @else {
+  <p>No rooms available.</p>
+  }
 </div>
 } @empty {
 <h4>No hotels available.</h4>
-}
+} } @case ('Motel') {
+<h4>No motels available.</h4>
+} @case ('Resort') {
+<h4>No resorts available.</h4>
+} @case ('Hostel') {
+<h4>No hostels available.</h4>
+} @default {
+<h4>Somehing went wrong. Please try again later.</h4>
+} }
 
 <!-- } @else {
 <h4>No hotels available.</h4>
