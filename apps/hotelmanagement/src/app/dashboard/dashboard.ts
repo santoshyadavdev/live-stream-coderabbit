@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { single } from 'rxjs';
+import { Component, signal } from '@angular/core';
 
 interface Hotel {
   id: number;
