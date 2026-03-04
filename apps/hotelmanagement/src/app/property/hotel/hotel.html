@@ -1,0 +1,29 @@
+<h3>Hotels Part of our Family</h3>
+@for (
+  hotel of hotels();
+  track hotel.id;
+  let index = $index;
+  let isFirst = $first;
+  let isLast = $last;
+  let even = $even;
+  let odd = $odd
+) {
+  <div class="hotel">
+    ID:
+    <p [class]="even ? 'even' : 'odd'">{{ $index + 1 }}</p>
+    Name:
+    <h4>{{ hotel.name }}</h4>
+    Location:
+    <p>{{ hotel.location }}</p>
+    @if (hotel.numberOfRooms > 50) {
+      <p>Number of Rooms: {{ hotel.numberOfRooms }}</p>
+    } @else if (hotel.numberOfRooms <= 50 && hotel.numberOfRooms > 0) {
+      <p>Last {{ hotel.numberOfRooms }} rooms available</p>
+    } @else {
+      <p>No rooms available.</p>
+    }
+    <button (click)="deleteRoom(hotel.id)">Delete Room</button>
+  </div>
+} @empty {
+  <h4>No hotels available.</h4>
+}

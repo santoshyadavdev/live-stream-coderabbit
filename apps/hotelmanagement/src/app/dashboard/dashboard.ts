@@ -1,16 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { Component, signal } from '@angular/core';
-
-interface Hotel {
-  id: number;
-  name: string;
-  location: string;
-  numberOfRooms: number;
-}
+import { IHotel } from './Hotel';
+import { Hotel } from "../property/hotel/hotel";
 
 @Component({
   selector: 'hm-dashboard',
-  imports: [],
+  imports: [Hotel],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
@@ -21,7 +15,7 @@ export class Dashboard {
 
   dateOfLastBooking: Date | null = null;
 
-  hotelList = signal<Hotel[]>([
+  hotelList = signal<IHotel[]>([
     {
       id: 1,
       name: 'Hotel California',
@@ -43,4 +37,8 @@ export class Dashboard {
   ]);
 
   propertyTypes = signal<'Hotel' | 'Motel' | 'Resort' | 'Hostel'>('Hotel');
+
+  handleRemoveRooms(bookingId: number) {
+    console.log(`Handling remove rooms for booking ID: ${bookingId}`);
+  }
 }
