@@ -1,12 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { IHotel } from './Hotel';
+import { Component, inject, signal } from '@angular/core';
 import { Hotel } from "../property/hotel/hotel";
+import { PropertyService } from './property';
 
 @Component({
   selector: 'hm-dashboard',
   imports: [Hotel],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
+  providers: [PropertyService],
 })
 export class Dashboard {
   title = signal('Welcome to the Hotel Management Dashboard!');
@@ -15,26 +16,7 @@ export class Dashboard {
 
   dateOfLastBooking: Date | null = null;
 
-  hotelList = signal<IHotel[]>([
-    {
-      id: 1,
-      name: 'Hotel California',
-      location: 'Los Angeles',
-      numberOfRooms: 0,
-    },
-    {
-      id: 2,
-      name: 'The Grand Budapest Hotel',
-      location: 'Zubrowka',
-      numberOfRooms: 200,
-    },
-    {
-      id: 3,
-      name: 'The Overlook Hotel',
-      location: 'Colorado',
-      numberOfRooms: 10,
-    },
-  ]);
+  hotelList = inject(PropertyService).getHotels();
 
   propertyTypes = signal<'Hotel' | 'Motel' | 'Resort' | 'Hostel'>('Hotel');
 
