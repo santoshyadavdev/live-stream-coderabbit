@@ -1,0 +1,47 @@
+<article class="hotel-card">
+  <div class="hotel-image-container">
+    <img [src]="hotel().imageUrl" [alt]="hotel().name" class="hotel-image" />
+    <span class="hotel-badge">Featured</span>
+  </div>
+
+  <div class="hotel-content">
+    <div class="hotel-header">
+      <h3 class="hotel-name">{{ hotel().name }}</h3>
+      <div class="hotel-rating">
+        <span class="rating-star">★</span>
+        <span class="rating-value">{{ hotel().rating }}</span>
+      </div>
+    </div>
+
+    <div class="hotel-location">
+      <span class="location-icon">📍</span>
+      <span>{{ hotel().location }}</span>
+    </div>
+
+    <div class="hotel-amenities">
+      @for (amenity of hotel().amenities.slice(0, 3); track amenity) {
+        <span class="amenity-tag">{{ amenity }}</span>
+      }
+      @if (hotel().amenities.length > 3) {
+        <span class="amenity-tag amenity-more"
+          >+{{ hotel().amenities.length - 3 }} more</span
+        >
+      }
+    </div>
+
+    <div class="hotel-footer">
+      <div class="hotel-price">
+        <span class="price-amount">{{ hotel().pricePerNight | currency }}</span>
+        <span class="price-period">per night</span>
+      </div>
+      <div class="hotel-availability">
+        <span class="availability-dot"></span>
+        <span class="availability-text"
+          >{{ hotel().availableRooms }} rooms available</span
+        >
+      </div>
+    </div>
+
+    <button class="book-btn">Book Now</button>
+  </div>
+</article>
