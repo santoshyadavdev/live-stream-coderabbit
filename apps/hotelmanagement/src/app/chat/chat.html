@@ -1,0 +1,70 @@
+<div class="chat-container">
+  <h2 class="page-title">Hotel Recommendations</h2>
+
+  <div class="search-bar">
+    <input
+      class="search-input"
+      type="text"
+      placeholder="e.g. find me a hotel in Paris for 2 people next weekend"
+      [(ngModel)]="message"
+      (keyup.enter)="search()"
+    />
+    <button class="search-btn" (click)="search()" [disabled]="!message.trim()">
+      Search
+    </button>
+  </div>
+
+  @if (loading()) {
+    <div class="loading">Finding hotels...</div>
+  }
+
+  @if (hotels$ | async; as hotels) {
+    <div class="hotel-grid">
+      @for (hotel of hotels; track hotel.hotel_name) {
+        <div class="hotel-card">
+          <div class="hotel-header">
+            <h3 class="hotel-name">{{ hotel.hotel_name }}</h3>
+            <span class="star-rating">
+              @for (star of [].constructor(hotel.star_rating); track $index) {
+                &#9733;
+              }
+            </span>
+          </div>
+
+          <div class="hotel-location">
+            <span class="neighborhood">{{ hotel.neighborhood }}</span>
+            <span class="address">{{ hotel.location }}</span>
+          </div>
+
+          <div class="hotel-dates">
+            <div class="date-item">
+              <span class="label">Check-in</span>
+              <span class="value">{{ hotel.check_in_date }}</span>
+            </div>
+            <div class="date-item">
+              <span class="label">Check-out</span>
+              <span class="value">{{ hotel.check_out_date }}</span>
+            </div>
+            <div class="date-item">
+              <span class="label">Guests</span>
+              <span class="value">{{ hotel.guests }}</span>
+            </div>
+          </div>
+
+          <div class="amenities">
+            @for (amenity of hotel.amenities; track amenity) {
+              <span class="amenity-tag">{{ amenity }}</span>
+            }
+          </div>
+
+          <div class="hotel-footer">
+            <span class="price">
+              ${{ hotel.estimated_price_per_night_usd }}<small>/night</small>
+            </span>
+            <button class="book-btn">Book Now</button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
