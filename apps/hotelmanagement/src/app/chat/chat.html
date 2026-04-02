@@ -1,15 +1,22 @@
 <div class="chat-container">
   <h2 class="page-title">Hotel Recommendations</h2>
 
+{{chatForm().value()}}
+{{chatForm().invalid()}}
+{{chatForm().valid()}}
+{{chatForm().dirty()}}
+{{chatForm().errors() | json  }}
+
+
   <div class="search-bar">
     <input
       class="search-input"
       type="text"
       placeholder="e.g. find me a hotel in Paris for 2 people next weekend"
-      [(ngModel)]="message"
+      [formField]="chatForm"
       (keyup.enter)="search()"
     />
-    <button class="search-btn" (click)="search()" [disabled]="!message.trim()">
+    <button class="search-btn" (click)="search()" [disabled]="chatForm().invalid()">
       Search
     </button>
   </div>
