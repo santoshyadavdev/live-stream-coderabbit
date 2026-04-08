@@ -26,7 +26,7 @@ export class Dashboard {
   propertyTypes = signal<'Hotel' | 'Motel' | 'Resort' | 'Hostel'>('Hotel');
 
 
-  // This is old observale-based approach, just for reference
+  // This is old observable-based approach, just for reference
   hotels$ = inject(HttpClient).get<HotelAPIResponse>('/api/hotels');
 
   hotelResource = resource({
