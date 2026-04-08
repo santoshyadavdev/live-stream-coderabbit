@@ -1,0 +1,31 @@
+.navigation {
+  background: #0e2f45;
+  color: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  display: grid;
+  gap: 14px;
+}
+
+.navigation h1 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+nav {
+  display: grid;
+  gap: 6px;
+}
+
+nav a {
+  color: #d2e6f6;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+nav a.active,
+nav a:hover {
+  background: #1e5f8a;
+  color: #fff;
+}

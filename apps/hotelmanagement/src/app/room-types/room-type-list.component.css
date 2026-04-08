@@ -1,0 +1,36 @@
+.layout {
+  display: grid;
+  gap: 20px;
+}
+
+.table-wrapper {
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #dce5ef;
+  border-radius: 14px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+small {
+  display: block;
+  color: #66768a;
+}
+
+button {
+  margin-right: 6px;
+}
+
+.error {
+  color: #b42318;
+}

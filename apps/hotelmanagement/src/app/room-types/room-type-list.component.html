@@ -1,0 +1,41 @@
+<section class="layout">
+  <hm-room-type-form
+    [roomType]="selected()"
+    (save)="selected() ? update($event) : create($event)"
+  />
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Occupancy</th>
+          <th>Size</th>
+          <th>Base Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (roomType of roomTypes(); track roomType.id) {
+          <tr>
+            <td>
+              <a [routerLink]="['/room-types', roomType.id]">{{ roomType.name }}</a>
+              <small>{{ roomType.description }}</small>
+            </td>
+            <td>{{ roomType.maxAdults }}A / {{ roomType.maxChildren }}C</td>
+            <td>{{ roomType.squareFootage }} sq ft</td>
+            <td>${{ roomType.basePrice }}</td>
+            <td>
+              <button type="button" (click)="selected.set(roomType)">Edit</button>
+              <button type="button" (click)="remove(roomType.id)">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

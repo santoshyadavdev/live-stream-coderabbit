@@ -1,0 +1,50 @@
+.allocation-layout {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid #dce5ef;
+  border-radius: 12px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.panel.wide {
+  grid-column: 1 / -1;
+}
+
+.reservation {
+  border: 1px solid #dde6f1;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.reservation.vip {
+  border-color: #8a5a00;
+  background: #fffaf0;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.error {
+  color: #b42318;
+}

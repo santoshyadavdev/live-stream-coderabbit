@@ -1,0 +1,46 @@
+<section class="card">
+  <h3>{{ room() ? 'Edit Room' : 'Create Room' }}</h3>
+  <div class="grid">
+    <label>
+      Room Number
+      <input [ngModel]="form().roomNumber" (ngModelChange)="update('roomNumber', $event)" />
+    </label>
+
+    <label>
+      Room Type
+      <select [ngModel]="form().roomTypeId" (ngModelChange)="update('roomTypeId', $event)">
+        <option value="" disabled>Select room type</option>
+        @for (roomType of roomTypes(); track roomType.id) {
+          <option [value]="roomType.id">{{ roomType.name }}</option>
+        }
+      </select>
+    </label>
+
+    <label>
+      Floor
+      <input type="number" [ngModel]="form().floor" (ngModelChange)="update('floor', +$event)" />
+    </label>
+
+    <label>
+      Wing
+      <input [ngModel]="form().wing" (ngModelChange)="update('wing', $event)" />
+    </label>
+
+    <label>
+      Status
+      <select [ngModel]="form().status" (ngModelChange)="update('status', $event)">
+        @for (status of statuses; track status) {
+          <option [value]="status">{{ status }}</option>
+        }
+      </select>
+    </label>
+  </div>
+
+  <hm-amenity-picker
+    [amenities]="amenities()"
+    [selectedIds]="form().amenityIds"
+    (selectionChange)="update('amenityIds', $event)"
+  />
+
+  <button class="primary" type="button" (click)="submit()">Save Room</button>
+</section>

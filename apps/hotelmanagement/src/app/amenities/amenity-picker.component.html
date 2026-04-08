@@ -1,0 +1,42 @@
+<section class="amenity-picker">
+  <div class="picker-toolbar">
+    <input
+      class="search-input"
+      type="search"
+      placeholder="Search amenities"
+      [ngModel]="query()"
+      (ngModelChange)="onSearch($event)"
+    />
+
+    <div class="category-tabs">
+      @for (item of categories; track item) {
+        <button
+          type="button"
+          class="tab-btn"
+          [class.active]="category() === item"
+          (click)="setCategory(item)"
+        >
+          {{ item }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="amenity-list">
+    @for (amenity of filteredAmenities(); track amenity.id) {
+      <label class="amenity-item">
+        <input
+          type="checkbox"
+          [checked]="isChecked(amenity.id)"
+          (change)="toggleAmenity(amenity.id, $any($event.target).checked)"
+        />
+        <span class="amenity-icon">{{ amenity.icon }}</span>
+        <span>{{ amenity.name }}</span>
+      </label>
+    }
+
+    @if (!filteredAmenities().length) {
+      <p class="empty">No amenities match your filters.</p>
+    }
+  </div>
+</section>

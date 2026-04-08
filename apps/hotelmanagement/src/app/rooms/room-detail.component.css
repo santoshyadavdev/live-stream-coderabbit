@@ -1,0 +1,24 @@
+.detail-card {
+  background: #fff;
+  border: 1px solid #dce5ef;
+  border-radius: 14px;
+  padding: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.amenities span {
+  background: #f2f6fb;
+  border-radius: 20px;
+  padding: 6px 10px;
+}
+
+.error {
+  color: #b42318;
+}

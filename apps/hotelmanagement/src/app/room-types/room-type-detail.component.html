@@ -1,0 +1,45 @@
+@if (roomType(); as item) {
+  <section class="detail-layout">
+    <article class="overview">
+      <h2>{{ item.name }}</h2>
+      <p>{{ item.description }}</p>
+      <ul>
+        <li>Adults: {{ item.maxAdults }}</li>
+        <li>Children: {{ item.maxChildren }}</li>
+        <li>Size: {{ item.squareFootage }} sq ft</li>
+        <li>Base Price: ${{ item.basePrice }}</li>
+      </ul>
+    </article>
+
+    <section class="media-panel">
+      <hm-media-upload [roomTypeId]="item.id" (upload)="upload($event)" />
+
+      <div class="media-grid">
+        @for (mediaItem of mediaItems(); track mediaItem.id) {
+          <figure class="tile">
+            <img [src]="mediaItem.url" [alt]="mediaItem.caption" (click)="activeMedia.set(mediaItem)" />
+            <figcaption>
+              <strong>{{ mediaItem.type }}</strong>
+              <span>{{ mediaItem.caption }}</span>
+            </figcaption>
+            <div class="actions">
+              <button type="button" (click)="reorder(mediaItem, 'up')">Up</button>
+              <button type="button" (click)="reorder(mediaItem, 'down')">Down</button>
+              <button type="button" (click)="remove(mediaItem.id)">Delete</button>
+            </div>
+          </figure>
+        }
+      </div>
+    </section>
+  </section>
+}
+
+@if (error()) {
+  <p class="error">{{ error() }}</p>
+}
+
+@if (activeMedia(); as selected) {
+  <div class="lightbox" (click)="activeMedia.set(null)">
+    <img [src]="selected.url" [alt]="selected.caption" />
+  </div>
+}

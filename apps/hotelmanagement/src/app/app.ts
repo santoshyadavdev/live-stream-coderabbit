@@ -1,17 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { Dashboard } from './dashboard/dashboard';
-import { PropertyService } from './dashboard/property';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @Component({
-  imports: [RouterModule, Dashboard, ],
+  standalone: true,
+  imports: [RouterOutlet, NavigationComponent],
   selector: 'hm-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
-  protected title = 'hotelmanagement';
-
-
-  hotelList = inject(PropertyService).getHotels();
-}
+export class App {}

@@ -1,0 +1,57 @@
+.room-card {
+  background: #fff;
+  border: 1px solid #dce5ef;
+  border-radius: 14px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.room-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  text-transform: capitalize;
+  border-radius: 14px;
+  padding: 4px 10px;
+  background: #e6f5ec;
+  color: #1d7a45;
+}
+
+.room-card.occupied .status {
+  background: #fff4d8;
+  color: #8a5a00;
+}
+
+.room-card.maintenance .status {
+  background: #fde7e8;
+  color: #9b1b1f;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags span {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #edf3f9;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.allocation {
+  margin: 0;
+  color: #3f5266;
+}

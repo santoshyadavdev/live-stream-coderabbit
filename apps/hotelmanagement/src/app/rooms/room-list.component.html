@@ -1,0 +1,95 @@
+<section class="page">
+  <hm-room-form
+    [room]="selectedRoom()"
+    [roomTypes]="roomTypes()"
+    (save)="saveRoom($event)"
+  />
+
+  <div class="filters">
+    <select [ngModel]="filter().roomTypeId" (ngModelChange)="updateFilter('roomTypeId', $event)">
+      <option value="">All Types</option>
+      @for (roomType of roomTypes(); track roomType.id) {
+        <option [value]="roomType.id">{{ roomType.name }}</option>
+      }
+    </select>
+
+    <input
+      type="number"
+      placeholder="Floor"
+      [ngModel]="filter().floor"
+      (ngModelChange)="updateFilter('floor', $event)"
+    />
+
+    <input
+      type="text"
+      placeholder="Wing"
+      [ngModel]="filter().wing"
+      (ngModelChange)="updateFilter('wing', $event)"
+    />
+
+    <select [ngModel]="filter().status" (ngModelChange)="updateFilter('status', $event)">
+      <option value="">All Statuses</option>
+      @for (status of ['available', 'occupied', 'maintenance']; track status) {
+        <option [value]="status">{{ status }}</option>
+      }
+    </select>
+
+    <input
+      type="text"
+      placeholder="Amenity IDs (comma-separated)"
+      [ngModel]="filter().amenities"
+      (ngModelChange)="updateFilter('amenities', $event)"
+    />
+
+    <button type="button" (click)="applyFilters()">Apply Filters</button>
+  </div>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  <div class="grid">
+    @for (room of filteredRooms(); track room.id) {
+      <hm-room-card
+        [room]="room"
+        [roomType]="resolveType(room.roomTypeId)"
+        [amenities]="resolveAmenities(room.amenityIds)"
+        (edit)="selectedRoom.set(room)"
+        (markOOO)="markOOO($event)"
+      />
+    }
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Room</th>
+          <th>Type</th>
+          <th>Floor</th>
+          <th>Wing</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (room of filteredRooms(); track room.id) {
+          <tr>
+            <td>
+              <a [routerLink]="['/rooms', room.id]">{{ room.roomNumber }}</a>
+            </td>
+            <td>{{ resolveType(room.roomTypeId)?.name || room.roomTypeId }}</td>
+            <td>{{ room.floor }}</td>
+            <td>{{ room.wing }}</td>
+            <td><span class="status" [class]="room.status">{{ room.status }}</span></td>
+            <td>
+              <button type="button" (click)="selectedRoom.set(room)">Edit</button>
+              <button type="button" (click)="markOOO(room.id)">Mark OOO</button>
+              <button type="button" (click)="removeRoom(room.id)">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

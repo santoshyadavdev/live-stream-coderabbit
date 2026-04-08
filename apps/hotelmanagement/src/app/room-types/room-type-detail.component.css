@@ -1,0 +1,70 @@
+.detail-layout {
+  display: grid;
+  gap: 18px;
+}
+
+.overview {
+  background: #fff;
+  border: 1px solid #dce5ef;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.overview h2 {
+  margin-top: 0;
+}
+
+.media-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.media-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.tile {
+  margin: 0;
+  background: #fff;
+  border: 1px solid #dce5ef;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tile img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.tile figcaption,
+.actions {
+  display: grid;
+  gap: 6px;
+  padding: 8px;
+}
+
+.actions {
+  display: flex;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: grid;
+  place-items: center;
+}
+
+.lightbox img {
+  max-width: min(90vw, 900px);
+  max-height: 90vh;
+  border-radius: 12px;
+}
+
+.error {
+  color: #b42318;
+}

@@ -1,0 +1,33 @@
+<section class="page">
+  <hm-ooo-schedule-form [rooms]="rooms()" [roomId]="roomId()" (saved)="loadSchedules()" />
+
+  <div class="filters">
+    <input type="date" [ngModel]="filters().startDate" (ngModelChange)="updateFilter('startDate', $any($event))" />
+    <input type="date" [ngModel]="filters().endDate" (ngModelChange)="updateFilter('endDate', $any($event))" />
+    <select [ngModel]="filters().reason" (ngModelChange)="updateFilter('reason', $any($event))">
+      <option value="">All reasons</option>
+      @for (reason of ['cleaning', 'renovation', 'maintenance']; track reason) {
+        <option [value]="reason">{{ reason }}</option>
+      }
+    </select>
+    <button type="button" (click)="loadSchedules()">Apply</button>
+  </div>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  <div class="timeline">
+    @for (schedule of schedules(); track schedule.id) {
+      <article class="schedule" [class]="schedule.reason">
+        <header>
+          <strong>{{ schedule.reason }}</strong>
+          <button type="button" (click)="cancel(schedule.id)">Cancel</button>
+        </header>
+        <p>Room: {{ schedule.roomId }}</p>
+        <p>{{ schedule.startDate }} → {{ schedule.endDate }}</p>
+        <p>{{ schedule.notes }}</p>
+      </article>
+    }
+  </div>
+</section>
