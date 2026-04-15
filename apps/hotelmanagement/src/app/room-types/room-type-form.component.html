@@ -1,0 +1,57 @@
+<section class="card">
+  <h3>{{ roomType() ? 'Edit Room Type' : 'Create Room Type' }}</h3>
+
+  <div class="grid">
+    <label>
+      Name
+      <input [ngModel]="form().name" (ngModelChange)="update('name', $event)" />
+    </label>
+
+    <label>
+      Base Price
+      <input type="number" [ngModel]="form().basePrice" (ngModelChange)="update('basePrice', +$event)" />
+    </label>
+
+    <label>
+      Max Adults
+      <input type="number" [ngModel]="form().maxAdults" (ngModelChange)="update('maxAdults', +$event)" />
+    </label>
+
+    <label>
+      Max Children
+      <input type="number" [ngModel]="form().maxChildren" (ngModelChange)="update('maxChildren', +$event)" />
+    </label>
+
+    <label>
+      Square Footage
+      <input type="number" [ngModel]="form().squareFootage" (ngModelChange)="update('squareFootage', +$event)" />
+    </label>
+
+    <label class="full">
+      Description
+      <textarea [ngModel]="form().description" (ngModelChange)="update('description', $event)"></textarea>
+    </label>
+  </div>
+
+  <div class="beds">
+    <header>
+      <h4>Bed Configuration</h4>
+      <button type="button" (click)="addBedConfiguration()">Add bed</button>
+    </header>
+
+    @for (bed of form().bedConfiguration; track $index) {
+      <div class="bed-row">
+        <input [ngModel]="bed" (ngModelChange)="updateBedConfiguration($index, $event)" />
+        <button type="button" (click)="removeBedConfiguration($index)">Remove</button>
+      </div>
+    }
+  </div>
+
+  <hm-amenity-picker
+    [amenities]="amenities()"
+    [selectedIds]="form().amenityIds"
+    (selectionChange)="onAmenitiesChanged($event)"
+  />
+
+  <button class="primary" type="button" (click)="submit()">Save Room Type</button>
+</section>

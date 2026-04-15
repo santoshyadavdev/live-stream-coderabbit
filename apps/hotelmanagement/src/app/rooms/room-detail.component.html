@@ -1,0 +1,17 @@
+@if (room(); as item) {
+  <section class="detail-card">
+    <h2>Room {{ item.roomNumber }}</h2>
+    <p>Type: {{ roomType()?.name || item.roomTypeId }}</p>
+    <p>Location: Floor {{ item.floor }}, {{ item.wing }} wing</p>
+    <p>Status: {{ item.status }}</p>
+    <div class="amenities">
+      @for (amenityName of resolveSelectedAmenities(); track amenityName) {
+        <span>{{ amenityName }}</span>
+      }
+    </div>
+  </section>
+}
+
+@if (error()) {
+  <p class="error">{{ error() }}</p>
+}

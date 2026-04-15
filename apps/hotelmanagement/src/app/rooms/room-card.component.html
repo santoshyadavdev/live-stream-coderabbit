@@ -1,0 +1,21 @@
+<article class="room-card" [class.occupied]="room().status === 'occupied'" [class.maintenance]="room().status === 'maintenance'">
+  <header>
+    <h3>Room {{ room().roomNumber }}</h3>
+    <span class="status">{{ room().status }}</span>
+  </header>
+
+  <p>{{ roomType()?.name || room().roomTypeId }}</p>
+  <p>Floor {{ room().floor }} • {{ room().wing }} wing</p>
+  <p class="allocation">Allocation: {{ allocationLabel() }}</p>
+
+  <div class="tags">
+    @for (amenity of amenities(); track amenity.id) {
+      <span>{{ amenity.icon }}</span>
+    }
+  </div>
+
+  <div class="actions">
+    <button type="button" (click)="edit.emit(room().id)">Edit</button>
+    <button type="button" (click)="markOOO.emit(room().id)">Mark OOO</button>
+  </div>
+</article>

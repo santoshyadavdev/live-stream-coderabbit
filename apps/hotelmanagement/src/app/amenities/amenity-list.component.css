@@ -1,0 +1,33 @@
+.amenity-groups {
+  display: grid;
+  gap: 16px;
+}
+
+.amenity-group {
+  background: #fff;
+  border: 1px solid #dce5ef;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.amenity-group h3 {
+  margin: 0 0 10px;
+  text-transform: capitalize;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.item {
+  background: #f4f8fc;
+  border-radius: 20px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+}
+
+.error {
+  color: #b42318;
+}

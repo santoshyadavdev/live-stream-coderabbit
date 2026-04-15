@@ -1,0 +1,63 @@
+.amenity-picker {
+  display: grid;
+  gap: 12px;
+}
+
+.picker-toolbar {
+  display: grid;
+  gap: 8px;
+}
+
+.search-input {
+  border: 1px solid #d8e0ea;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tab-btn {
+  border: 1px solid #c8d4e3;
+  border-radius: 20px;
+  padding: 6px 12px;
+  background: #fff;
+  text-transform: capitalize;
+}
+
+.tab-btn.active {
+  background: #1e5f8a;
+  color: #fff;
+  border-color: #1e5f8a;
+}
+
+.amenity-list {
+  display: grid;
+  gap: 6px;
+  max-height: 220px;
+  overflow: auto;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: #f6f8fb;
+}
+
+.amenity-icon {
+  width: 28px;
+  text-align: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.empty {
+  color: #65758b;
+  margin: 0;
+}

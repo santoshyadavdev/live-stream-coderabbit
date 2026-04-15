@@ -1,0 +1,19 @@
+<section class="amenity-groups">
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  @for (group of groups; track group) {
+    <article class="amenity-group">
+      <h3>{{ group }}</h3>
+      <div class="items">
+        @for (amenity of getAmenitiesForGroup(group); track amenity.id) {
+          <span class="item">
+            <strong>{{ amenity.icon }}</strong>
+            {{ amenity.name }}
+          </span>
+        }
+      </div>
+    </article>
+  }
+</section>

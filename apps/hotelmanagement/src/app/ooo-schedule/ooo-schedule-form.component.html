@@ -1,0 +1,47 @@
+<section class="card">
+  <h3>Mark Room Out Of Order</h3>
+
+  @if (!roomId()) {
+    <label>
+      Room
+      <select [ngModel]="form().roomId" (ngModelChange)="update('roomId', $event)">
+        <option value="" disabled>Select room</option>
+        @for (room of rooms(); track room.id) {
+          <option [value]="room.id">{{ room.roomNumber }} - {{ room.wing }}</option>
+        }
+      </select>
+    </label>
+  }
+
+  <div class="grid">
+    <label>
+      Start Date
+      <input type="date" [ngModel]="form().startDate" (ngModelChange)="update('startDate', $event)" />
+    </label>
+
+    <label>
+      End Date
+      <input type="date" [ngModel]="form().endDate" (ngModelChange)="update('endDate', $event)" />
+    </label>
+
+    <label>
+      Reason
+      <select [ngModel]="form().reason" (ngModelChange)="update('reason', $event)">
+        @for (reason of ['cleaning', 'renovation', 'maintenance']; track reason) {
+          <option [value]="reason">{{ reason }}</option>
+        }
+      </select>
+    </label>
+
+    <label class="full">
+      Notes
+      <textarea [ngModel]="form().notes" (ngModelChange)="update('notes', $event)"></textarea>
+    </label>
+  </div>
+
+  @if (conflict()) {
+    <p class="error">{{ conflict() }}</p>
+  }
+
+  <button type="button" class="primary" (click)="submit()">Save OOO Schedule</button>
+</section>

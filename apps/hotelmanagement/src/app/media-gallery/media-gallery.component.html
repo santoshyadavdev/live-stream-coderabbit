@@ -1,0 +1,30 @@
+<section class="gallery-layout">
+  <hm-media-upload [roomTypeId]="roomTypeId()" (upload)="upload($event)" />
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  <div class="media-grid">
+    @for (item of mediaItems(); track item.id) {
+      <figure class="tile">
+        <img [src]="item.url" [alt]="item.caption" (click)="activeMedia.set(item)" />
+        <figcaption>
+          <strong>{{ item.type }}</strong>
+          <span>{{ item.caption }}</span>
+        </figcaption>
+        <div class="actions">
+          <button type="button" (click)="reorder(item, 'up')">Up</button>
+          <button type="button" (click)="reorder(item, 'down')">Down</button>
+          <button type="button" (click)="remove(item.id)">Delete</button>
+        </div>
+      </figure>
+    }
+  </div>
+
+  @if (activeMedia(); as selected) {
+    <div class="lightbox" (click)="activeMedia.set(null)">
+      <img [src]="selected.url" [alt]="selected.caption" />
+    </div>
+  }
+</section>

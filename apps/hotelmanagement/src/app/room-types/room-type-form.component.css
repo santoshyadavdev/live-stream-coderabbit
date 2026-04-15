@@ -1,0 +1,67 @@
+.card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #dce5ef;
+  padding: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+  color: #21364a;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  border: 1px solid #c9d7e6;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.beds {
+  border: 1px solid #e6edf5;
+  border-radius: 12px;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.beds header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bed-row {
+  display: flex;
+  gap: 8px;
+}
+
+.primary {
+  justify-self: start;
+  background: #1e5f8a;
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+}

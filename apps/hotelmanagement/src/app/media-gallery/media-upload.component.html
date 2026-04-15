@@ -1,0 +1,28 @@
+<section class="upload-card">
+  <h4>Upload Media</h4>
+
+  <label>
+    Image URL or Base64
+    <input [ngModel]="form().source" (ngModelChange)="update('source', $event)" />
+  </label>
+
+  <label>
+    Type
+    <select [ngModel]="form().type" (ngModelChange)="update('type', $event)">
+      @for (type of ['photo', 'tour', 'floorplan']; track type) {
+        <option [value]="type">{{ type }}</option>
+      }
+    </select>
+  </label>
+
+  <label>
+    Caption
+    <input [ngModel]="form().caption" (ngModelChange)="update('caption', $event)" />
+  </label>
+
+  @if (preview()) {
+    <img [src]="preview()" alt="Preview" class="preview" />
+  }
+
+  <button type="button" (click)="submit()">Upload</button>
+</section>

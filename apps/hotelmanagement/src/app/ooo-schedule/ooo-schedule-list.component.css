@@ -1,0 +1,49 @@
+.page {
+  display: grid;
+  gap: 16px;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: #fff;
+  border: 1px solid #dce5ef;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.timeline {
+  display: grid;
+  gap: 10px;
+}
+
+.schedule {
+  background: #fff;
+  border: 1px solid #dce5ef;
+  border-left: 5px solid #65758b;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.schedule.cleaning {
+  border-left-color: #1d7a45;
+}
+
+.schedule.renovation {
+  border-left-color: #8a5a00;
+}
+
+.schedule.maintenance {
+  border-left-color: #9b1b1f;
+}
+
+.schedule header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error {
+  color: #b42318;
+}

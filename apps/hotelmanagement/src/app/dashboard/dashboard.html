@@ -1,5 +1,16 @@
+<section class="dashboard-container">
+	<header class="dashboard-header">
+		<h1>Operations Dashboard</h1>
+		<p>Configure room products, availability, and operational assignments.</p>
+	</header>
 
-<!-- {{hotels$ | async | json}} -->
-
-
-<hm-chat />
+	<div class="summary-grid">
+		@for (card of summaryCards(); track card.title) {
+			<a class="summary-card" [routerLink]="card.route">
+				<span class="metric">{{ card.metric }}</span>
+				<h2>{{ card.title }}</h2>
+				<p>{{ card.description }}</p>
+			</a>
+		}
+	</div>
+</section>

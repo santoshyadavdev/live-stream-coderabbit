@@ -1,0 +1,54 @@
+.page {
+  display: grid;
+  gap: 18px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #dce5ef;
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.filters input,
+.filters select {
+  border: 1px solid #c9d7e6;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.table-wrapper {
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #dce5ef;
+  border-radius: 14px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #eef2f7;
+  text-align: left;
+}
+
+.status {
+  text-transform: capitalize;
+}
+
+.error {
+  color: #b42318;
+}

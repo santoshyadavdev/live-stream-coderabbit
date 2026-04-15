@@ -1,0 +1,67 @@
+<section class="allocation-layout">
+  <article class="panel">
+    <h3>Unassigned Reservations</h3>
+    @for (reservation of unassignedReservations(); track reservation.id) {
+      <div class="reservation" [class.vip]="reservation.isVIP">
+        <strong>{{ reservation.guestName }}</strong>
+        <p>{{ reservation.checkIn }} → {{ reservation.checkOut }}</p>
+        <p>Type: {{ reservation.roomTypeId }}</p>
+        <div class="actions">
+          <button type="button" (click)="autoAllocate(reservation)">Auto Allocate</button>
+          <button type="button" (click)="selectedReservation.set(reservation)">Manual</button>
+        </div>
+      </div>
+    }
+  </article>
+
+  <article class="panel">
+    <h3>Manual Allocation</h3>
+    @if (selectedReservation(); as reservation) {
+      <p>Reservation: {{ reservation.guestName }} ({{ reservation.roomTypeId }})</p>
+      <select [ngModel]="selectedRoomId()" (ngModelChange)="selectedRoomId.set($event)">
+        <option value="" disabled>Select room</option>
+        @for (room of rooms(); track room.id) {
+          <option [value]="room.id">{{ room.roomNumber }} - {{ room.status }}</option>
+        }
+      </select>
+      <button type="button" (click)="manualAllocate()">Assign Room</button>
+    } @else {
+      <p>Select a reservation to manually allocate.</p>
+    }
+  </article>
+
+  <article class="panel wide">
+    <h3>Active Allocations</h3>
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+
+    <table>
+      <thead>
+        <tr>
+          <th>Allocation ID</th>
+          <th>Reservation</th>
+          <th>Room</th>
+          <th>VIP Lock</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (allocation of allocations(); track allocation.id) {
+          <tr>
+            <td>{{ allocation.id }}</td>
+            <td>{{ allocation.reservationId }}</td>
+            <td>{{ allocation.roomId }}</td>
+            <td>{{ allocation.isLocked ? 'Locked' : 'Unlocked' }}</td>
+            <td>
+              <button type="button" (click)="toggleLock(allocation)">
+                {{ allocation.isLocked ? 'Unlock' : 'Lock' }}
+              </button>
+              <button type="button" (click)="deallocate(allocation.id)">Remove</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </article>
+</section>
