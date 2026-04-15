@@ -33,6 +33,13 @@ export default [
               onlyDependOnLibsWithTags: ['scope:api', 'scope:shared'],
             },
             {
+              sourceTag: 'scope:hotelmanagement',
+              onlyDependOnLibsWithTags: [
+                'scope:hotelmanagement',
+                'scope:shared',
+              ],
+            },
+            {
               sourceTag: 'type:data',
               onlyDependOnLibsWithTags: ['type:data'],
             },
