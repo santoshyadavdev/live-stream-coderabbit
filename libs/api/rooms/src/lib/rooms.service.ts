@@ -94,31 +94,31 @@ export class RoomsService {
   ];
 
   private amenities: Amenity[] = [
-    { id: 'am-city-view', name: 'City View', category: 'view', icon: 'city' },
-    { id: 'am-balcony', name: 'Private Balcony', category: 'view', icon: 'balcony' },
+    { id: 'am-city-view', name: 'City View', category: 'view', icon: '🏙️' },
+    { id: 'am-balcony', name: 'Private Balcony', category: 'view', icon: '🌅' },
     {
       id: 'am-wheelchair-access',
       name: 'Wheelchair Accessible',
       category: 'accessibility',
-      icon: 'wheelchair',
+      icon: '♿',
     },
     {
       id: 'am-roll-in-shower',
       name: 'Roll-in Shower',
       category: 'accessibility',
-      icon: 'shower',
+      icon: '🚿',
     },
-    { id: 'am-smart-tv', name: 'Smart TV', category: 'feature', icon: 'tv' },
-    { id: 'am-minibar', name: 'Minibar', category: 'feature', icon: 'glass' },
-    { id: 'am-work-desk', name: 'Work Desk', category: 'feature', icon: 'desk' },
-    { id: 'am-sofa-bed', name: 'Sofa Bed', category: 'feature', icon: 'sofa' },
+    { id: 'am-smart-tv', name: 'Smart TV', category: 'feature', icon: '📺' },
+    { id: 'am-minibar', name: 'Minibar', category: 'feature', icon: '🍸' },
+    { id: 'am-work-desk', name: 'Work Desk', category: 'feature', icon: '🖥️' },
+    { id: 'am-sofa-bed', name: 'Sofa Bed', category: 'feature', icon: '🛋️' },
     {
       id: 'am-mini-kitchen',
       name: 'Mini Kitchen',
       category: 'feature',
-      icon: 'kitchen',
+      icon: '🍳',
     },
-    { id: 'am-bathtub', name: 'Bathtub', category: 'feature', icon: 'bath' },
+    { id: 'am-bathtub', name: 'Bathtub', category: 'feature', icon: '🛁' },
   ];
 
   getAllRoomTypes(filter?: RoomTypeFilter): RoomType[] {
