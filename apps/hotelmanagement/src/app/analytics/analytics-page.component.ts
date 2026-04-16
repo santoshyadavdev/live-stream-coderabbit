@@ -16,12 +16,12 @@ import { OccupancyMetrics, RevenueMetrics } from '@org/models';
 
       <div class="bg-white rounded-lg shadow p-4 flex flex-wrap items-end gap-4">
         <div>
-          <label class="block text-sm font-medium text-gray-700">Start Date</label>
-          <input type="date" class="mt-1 rounded-md border-gray-300 shadow-sm text-sm" [ngModel]="startDate()" (ngModelChange)="startDate.set($event)" />
+          <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date</label>
+          <input id="startDate" type="date" class="mt-1 rounded-md border-gray-300 shadow-sm text-sm" [ngModel]="startDate()" (ngModelChange)="startDate.set($event)" />
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700">End Date</label>
-          <input type="date" class="mt-1 rounded-md border-gray-300 shadow-sm text-sm" [ngModel]="endDate()" (ngModelChange)="endDate.set($event)" />
+          <label for="endDate" class="block text-sm font-medium text-gray-700">End Date</label>
+          <input id="endDate" type="date" class="mt-1 rounded-md border-gray-300 shadow-sm text-sm" [ngModel]="endDate()" (ngModelChange)="endDate.set($event)" />
         </div>
         <button
           class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"

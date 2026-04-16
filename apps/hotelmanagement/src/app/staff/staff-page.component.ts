@@ -24,7 +24,7 @@ import { Employee } from '@org/models';
         [visible]="formVisible()"
         [employee]="editingEmployee()"
         (save)="onSave($event)"
-        (cancel)="closeForm()"
+        (cancelForm)="closeForm()"
       />
     </div>
   `,

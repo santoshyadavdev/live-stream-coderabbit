@@ -17,7 +17,7 @@
       <div class="media-grid">
         @for (mediaItem of mediaItems(); track mediaItem.id) {
           <figure class="tile">
-            <img [src]="mediaItem.url" [alt]="mediaItem.caption" (click)="activeMedia.set(mediaItem)" />
+            <img [src]="mediaItem.url" [alt]="mediaItem.caption" tabindex="0" role="button" (click)="activeMedia.set(mediaItem)" (keydown.enter)="activeMedia.set(mediaItem)" />
             <figcaption>
               <strong>{{ mediaItem.type }}</strong>
               <span>{{ mediaItem.caption }}</span>
@@ -39,7 +39,7 @@
 }
 
 @if (activeMedia(); as selected) {
-  <div class="lightbox" (click)="activeMedia.set(null)">
+  <div class="lightbox" role="button" tabindex="0" (click)="activeMedia.set(null)" (keydown.enter)="activeMedia.set(null)" (keydown.escape)="activeMedia.set(null)">
     <img [src]="selected.url" [alt]="selected.caption" />
   </div>
 }

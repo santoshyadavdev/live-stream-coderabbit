@@ -81,7 +81,7 @@ import { Employee, EmployeeRole } from '@org/models';
               <button
                 type="button"
                 class="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
-                (click)="cancel.emit()"
+                (click)="cancelForm.emit()"
               >
                 Cancel
               </button>
@@ -104,7 +104,7 @@ export class StaffFormComponent {
   visible = input(false);
 
   save = output<Partial<Employee>>();
-  cancel = output<void>();
+  cancelForm = output<void>();
 
   roles = Object.values(EmployeeRole);
 

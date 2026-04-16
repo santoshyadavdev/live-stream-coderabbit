@@ -26,7 +26,7 @@ import { Employee, Shift } from '@org/models';
         [shift]="editingShift()"
         [employees]="employees()"
         (save)="onSave($event)"
-        (cancel)="closeForm()"
+        (cancelForm)="closeForm()"
       />
     </div>
   `,

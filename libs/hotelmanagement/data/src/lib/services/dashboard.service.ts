@@ -1,6 +1,6 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, catchError, of, tap, finalize } from 'rxjs';
+import { Observable, catchError, of, finalize } from 'rxjs';
 import {
   Employee,
   Shift,
@@ -16,8 +16,7 @@ export class DashboardService {
   error = signal<string | null>(null);
 
   private readonly apiUrl = '/api';
-
-  constructor(private readonly http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   private request<T>(obs$: Observable<T>, fallback: T): Observable<T> {
     this.loading.set(true);
