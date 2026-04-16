@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, signal, OnInit } from '@angular/core';
 import { MediaItem } from '@org/models';
 import { RoomService } from '../services/room.service';
 import { MediaUploadComponent } from './media-upload.component';
@@ -10,7 +10,7 @@ import { MediaUploadComponent } from './media-upload.component';
   templateUrl: './media-gallery.component.html',
   styleUrl: './media-gallery.component.css',
 })
-export class MediaGalleryComponent {
+export class MediaGalleryComponent implements OnInit {
   private readonly roomService = inject(RoomService);
 
   roomTypeId = input.required<string>();

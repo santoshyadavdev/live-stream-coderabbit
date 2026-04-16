@@ -15,8 +15,14 @@
     "@angular/router": "21.1.1",
     "@angular/ssr": "21.1.1",
     "@genkit-ai/google-genai": "^1.31.0",
+    "@unovis/angular": "^1.6.4",
+    "@unovis/ts": "^1.6.4",
+    "angular-chrts": "^0.1.0-beta.7",
     "express": "^4.21.2",
+    "file-saver": "^2.0.5",
+    "genkit": "^1.32.0",
     "rxjs": "~7.8.0",
+    "xlsx": "^0.18.5",
     "zone.js": "0.16.0"
   },
   "devDependencies": {
@@ -48,6 +54,7 @@
     "@swc/core": "1.15.8",
     "@swc/helpers": "0.5.18",
     "@types/express": "^4.17.21",
+    "@types/file-saver": "^2.0.7",
     "@types/node": "20.19.9",
     "@types/supertest": "^6.0.3",
     "@typescript-eslint/utils": "^8.40.0",

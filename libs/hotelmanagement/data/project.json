@@ -1,0 +1,13 @@
+{
+  "name": "hotelmanagement-data",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/hotelmanagement/data/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["scope:hotelmanagement", "type:data"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "hm",
   "sourceRoot": "apps/hotelmanagement/src",
-  "tags": [],
+  "tags": ["scope:hotelmanagement"],
   "targets": {
     "build": {
       "executor": "@angular/build:application",
